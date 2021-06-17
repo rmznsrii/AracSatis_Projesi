@@ -1,0 +1,61 @@
+<mat-toolbar color="primary">
+  <span>{{ dialogBaslik }}</span>
+</mat-toolbar>
+
+<div class="container">
+  <form [formGroup]="frm">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Sipariş Kodu</mat-label>
+      <input
+        matInput
+        placeholder="Sipariş Kodu"
+        formControlName="siparisKodu"
+        name="siparisKodu"
+        required
+        type="text"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Sipariş Üye Id</mat-label>
+      <input
+        matInput
+        placeholder="Sipariş Üye Id"
+        formControlName="siparisUyeId"
+        name="siparisUyeId"
+        required
+        type="text"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Sipariş Tarihi</mat-label>
+      <input
+        matInput
+        placeholder="Sipariş Tarihi"
+        formControlName="siparisTarih"
+        name="siparisTarih"
+        required
+        type="text"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Sipariş Araç Id</mat-label>
+      <input
+        matInput
+        placeholder="Sipariş Araç Id"
+        formControlName="siparisAracId"
+        name="siparisAracId"
+        required
+        type="text"
+      />
+    </mat-form-field>
+
+  </form>
+
+  <button mat-stroked-button color="primary" [disabled]="frm.invalid" (click)="dialogRef.close(frm.value)">Kaydet</button>
+  &nbsp;
+  <button mat-stroked-button color="primary" (click)="dialogRef.close()">İptal </button>
+</div>

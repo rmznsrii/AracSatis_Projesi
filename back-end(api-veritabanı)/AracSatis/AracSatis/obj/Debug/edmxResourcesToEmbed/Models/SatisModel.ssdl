@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB002Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="araclar">
+    <Key>
+      <PropertyRef Name="aracId" />
+    </Key>
+    <Property Name="aracId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="aracAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="aracFiyat" Type="numeric" Precision="7" Scale="2" Nullable="false" />
+    <Property Name="aracBilgi" Type="text" Nullable="false" />
+    <Property Name="aracStok" Type="int" Nullable="false" />
+    <Property Name="aracFoto" Type="text" Nullable="false" />
+    <Property Name="aracKodu" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="aracKatId" Type="int" Nullable="false" />
+    <Property Name="aracMarkaId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="aracSiparisler">
+    <Key>
+      <PropertyRef Name="siparisId" />
+    </Key>
+    <Property Name="siparisId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="siparisUyeId" Type="int" Nullable="false" />
+    <Property Name="siparisTarih" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="siparisAracId" Type="int" Nullable="false" />
+    <Property Name="siparisKodu" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="kategoriler">
+    <Key>
+      <PropertyRef Name="katId" />
+    </Key>
+    <Property Name="katId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="katAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="markalar">
+    <Key>
+      <PropertyRef Name="markaId" />
+    </Key>
+    <Property Name="markaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="markaAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="uyeler">
+    <Key>
+      <PropertyRef Name="uyeId" />
+    </Key>
+    <Property Name="uyeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="uyeAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="uyeSoyadi" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="uyeKullaniciAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="uyeSifre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="uyeEposta" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="uyeTelefon" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="uyeAdres" Type="text" Nullable="false" />
+    <Property Name="uyeYetkilendirme" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_araclar_ToKategoriler">
+    <End Role="kategoriler" Type="Self.kategoriler" Multiplicity="1" />
+    <End Role="araclar" Type="Self.araclar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kategoriler">
+        <PropertyRef Name="katId" />
+      </Principal>
+      <Dependent Role="araclar">
+        <PropertyRef Name="aracKatId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_araclar_ToMarkalar">
+    <End Role="markalar" Type="Self.markalar" Multiplicity="1" />
+    <End Role="araclar" Type="Self.araclar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="markalar">
+        <PropertyRef Name="markaId" />
+      </Principal>
+      <Dependent Role="araclar">
+        <PropertyRef Name="aracMarkaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_aracSiparisler_ToAraclar">
+    <End Role="araclar" Type="Self.araclar" Multiplicity="1" />
+    <End Role="aracSiparisler" Type="Self.aracSiparisler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="araclar">
+        <PropertyRef Name="aracId" />
+      </Principal>
+      <Dependent Role="aracSiparisler">
+        <PropertyRef Name="siparisAracId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_aracSiparisler_ToUyeler">
+    <End Role="uyeler" Type="Self.uyeler" Multiplicity="1" />
+    <End Role="aracSiparisler" Type="Self.aracSiparisler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="uyeler">
+        <PropertyRef Name="uyeId" />
+      </Principal>
+      <Dependent Role="aracSiparisler">
+        <PropertyRef Name="siparisUyeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DB002ModelStoreContainer">
+    <EntitySet Name="araclar" EntityType="Self.araclar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="aracSiparisler" EntityType="Self.aracSiparisler" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="kategoriler" EntityType="Self.kategoriler" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="markalar" EntityType="Self.markalar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="uyeler" EntityType="Self.uyeler" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_araclar_ToKategoriler" Association="Self.FK_araclar_ToKategoriler">
+      <End Role="kategoriler" EntitySet="kategoriler" />
+      <End Role="araclar" EntitySet="araclar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_araclar_ToMarkalar" Association="Self.FK_araclar_ToMarkalar">
+      <End Role="markalar" EntitySet="markalar" />
+      <End Role="araclar" EntitySet="araclar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_aracSiparisler_ToAraclar" Association="Self.FK_aracSiparisler_ToAraclar">
+      <End Role="araclar" EntitySet="araclar" />
+      <End Role="aracSiparisler" EntitySet="aracSiparisler" />
+    </AssociationSet>
+    <AssociationSet Name="FK_aracSiparisler_ToUyeler" Association="Self.FK_aracSiparisler_ToUyeler">
+      <End Role="uyeler" EntitySet="uyeler" />
+      <End Role="aracSiparisler" EntitySet="aracSiparisler" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

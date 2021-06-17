@@ -1,0 +1,20 @@
+<div class="container">
+  <h1>Marka Bilgisi</h1>
+
+  <h3>
+    <button mat-stroked-button color="primary" (click)="Duzenle(secMarka)">Düzenle</button>
+    &nbsp;
+    <button mat-stroked-button color="warn" (click)="Sil(secMarka)">Sil</button>
+  </h3>
+
+  <h3><b>Araç Id : </b>{{ secMarka?.markaId }}</h3>
+  <h3><b>Araç Adı : </b>{{ secMarka?.markaAdi }}</h3>
+
+  <p>&nbsp;</p>
+
+
+
+
+  <button mat-stroked-button color="primary" [routerLink]="['/admin/markalar']">Geri</button>
+</div>
+

@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB002Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="araclar">
+    <Key>
+      <PropertyRef Name="aracId" />
+    </Key>
+    <Property Name="aracId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="aracAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="aracFiyat" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
+    <Property Name="aracBilgi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="aracStok" Type="Int32" Nullable="false" />
+    <Property Name="aracFoto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="aracKodu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="aracKatId" Type="Int32" Nullable="false" />
+    <Property Name="aracMarkaId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="kategoriler" Relationship="Self.FK_araclar_ToKategoriler" FromRole="araclar" ToRole="kategoriler" />
+    <NavigationProperty Name="markalar" Relationship="Self.FK_araclar_ToMarkalar" FromRole="araclar" ToRole="markalar" />
+    <NavigationProperty Name="aracSiparisler" Relationship="Self.FK_aracSiparisler_ToAraclar" FromRole="araclar" ToRole="aracSiparisler" />
+  </EntityType>
+  <EntityType Name="aracSiparisler">
+    <Key>
+      <PropertyRef Name="siparisId" />
+    </Key>
+    <Property Name="siparisId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="siparisUyeId" Type="Int32" Nullable="false" />
+    <Property Name="siparisTarih" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="siparisAracId" Type="Int32" Nullable="false" />
+    <Property Name="siparisKodu" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="araclar" Relationship="Self.FK_aracSiparisler_ToAraclar" FromRole="aracSiparisler" ToRole="araclar" />
+    <NavigationProperty Name="uyeler" Relationship="Self.FK_aracSiparisler_ToUyeler" FromRole="aracSiparisler" ToRole="uyeler" />
+  </EntityType>
+  <EntityType Name="kategoriler">
+    <Key>
+      <PropertyRef Name="katId" />
+    </Key>
+    <Property Name="katId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="katAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="araclar" Relationship="Self.FK_araclar_ToKategoriler" FromRole="kategoriler" ToRole="araclar" />
+  </EntityType>
+  <EntityType Name="markalar">
+    <Key>
+      <PropertyRef Name="markaId" />
+    </Key>
+    <Property Name="markaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="markaAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="araclar" Relationship="Self.FK_araclar_ToMarkalar" FromRole="markalar" ToRole="araclar" />
+  </EntityType>
+  <EntityType Name="uyeler">
+    <Key>
+      <PropertyRef Name="uyeId" />
+    </Key>
+    <Property Name="uyeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="uyeAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="uyeSoyadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="uyeKullaniciAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="uyeSifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="uyeEposta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="uyeTelefon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="uyeAdres" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="uyeYetkilendirme" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="aracSiparisler" Relationship="Self.FK_aracSiparisler_ToUyeler" FromRole="uyeler" ToRole="aracSiparisler" />
+  </EntityType>
+  <Association Name="FK_araclar_ToKategoriler">
+    <End Role="kategoriler" Type="Self.kategoriler" Multiplicity="1" />
+    <End Role="araclar" Type="Self.araclar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kategoriler">
+        <PropertyRef Name="katId" />
+      </Principal>
+      <Dependent Role="araclar">
+        <PropertyRef Name="aracKatId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_araclar_ToMarkalar">
+    <End Role="markalar" Type="Self.markalar" Multiplicity="1" />
+    <End Role="araclar" Type="Self.araclar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="markalar">
+        <PropertyRef Name="markaId" />
+      </Principal>
+      <Dependent Role="araclar">
+        <PropertyRef Name="aracMarkaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_aracSiparisler_ToAraclar">
+    <End Role="araclar" Type="Self.araclar" Multiplicity="1" />
+    <End Role="aracSiparisler" Type="Self.aracSiparisler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="araclar">
+        <PropertyRef Name="aracId" />
+      </Principal>
+      <Dependent Role="aracSiparisler">
+        <PropertyRef Name="siparisAracId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_aracSiparisler_ToUyeler">
+    <End Role="uyeler" Type="Self.uyeler" Multiplicity="1" />
+    <End Role="aracSiparisler" Type="Self.aracSiparisler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="uyeler">
+        <PropertyRef Name="uyeId" />
+      </Principal>
+      <Dependent Role="aracSiparisler">
+        <PropertyRef Name="siparisUyeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DB002Entities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="araclar" EntityType="Self.araclar" />
+    <EntitySet Name="aracSiparisler" EntityType="Self.aracSiparisler" />
+    <EntitySet Name="kategoriler" EntityType="Self.kategoriler" />
+    <EntitySet Name="markalar" EntityType="Self.markalar" />
+    <EntitySet Name="uyeler" EntityType="Self.uyeler" />
+    <AssociationSet Name="FK_araclar_ToKategoriler" Association="Self.FK_araclar_ToKategoriler">
+      <End Role="kategoriler" EntitySet="kategoriler" />
+      <End Role="araclar" EntitySet="araclar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_araclar_ToMarkalar" Association="Self.FK_araclar_ToMarkalar">
+      <End Role="markalar" EntitySet="markalar" />
+      <End Role="araclar" EntitySet="araclar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_aracSiparisler_ToAraclar" Association="Self.FK_aracSiparisler_ToAraclar">
+      <End Role="araclar" EntitySet="araclar" />
+      <End Role="aracSiparisler" EntitySet="aracSiparisler" />
+    </AssociationSet>
+    <AssociationSet Name="FK_aracSiparisler_ToUyeler" Association="Self.FK_aracSiparisler_ToUyeler">
+      <End Role="uyeler" EntitySet="uyeler" />
+      <End Role="aracSiparisler" EntitySet="aracSiparisler" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

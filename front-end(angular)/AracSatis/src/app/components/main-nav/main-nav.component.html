@@ -1,0 +1,61 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false" >
+
+      <div id="logo">
+        <a href="/anasayfa">
+            <img src="assets/logo.png" width="195" height="90" alt="">
+        </a>
+    </div>
+
+      <mat-toolbar >
+      <button mat-button [routerLink]="['']" ><h2>Anasayfa</h2></button>
+    </mat-toolbar>
+
+
+    <mat-nav-list>
+
+      <a mat-list-item [routerLink]="['']">Araçlar</a>
+      <a mat-list-item [routerLink]="['hakkimizda']">Hakkımızda</a>
+      <a mat-list-item [routerLink]="['iletisim']">İletişim</a>
+
+
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="mat-elevation-z8">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span [routerLink]="['/']">Araban Kapında</span>
+      <span class="spacer"></span>
+
+
+      <button mat-raised-button color='primary' [routerLink]="['/login']" *ngIf="!apiServis.oturumKontrol()" style="margin-left: auto;">Oturum Aç</button>&nbsp;
+      <button mat-raised-button color='primary'  *ngIf="apiServis.oturumKontrol()" style="margin-left: auto;">{{kadi}}</button>&nbsp;
+      <button mat-raised-button color='primary' (click)="OturumKapat()" *ngIf="apiServis.oturumKontrol()">Oturum Kapat</button>
+      <button mat-raised-button color='primary' matTooltip='Üye Ol' (click)="Ekle()" *ngIf="!apiServis.oturumKontrol()">Üye Ol</button>
+
+
+      <button mat-button [matMenuTriggerFor]="menu" *ngIf="apiServis.yetkiKontrol(['Admin'])" >
+        <mat-icon>admin_panel_settings</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item [routerLink]="['/admin']">Admin</button>
+        <button mat-menu-item [routerLink]="['admin/uyeler']">Üyeler</button>
+        <button mat-menu-item [routerLink]="['admin/urunler']">Araçlar</button>
+        <button mat-menu-item [routerLink]="['admin/kategoriler']">Kategoriler</button>
+        <button mat-menu-item [routerLink]="['admin/markalar']">Markalar</button>
+        <button mat-menu-item [routerLink]="['admin/siparisler']">Siparişler</button>
+        <button mat-menu-item (click)="OturumKapat()" *ngIf="apiServis.oturumKontrol()">Oturum Kapat</button>
+      </mat-menu>
+
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+

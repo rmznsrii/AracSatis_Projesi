@@ -1,0 +1,37 @@
+<div class="container">
+  <h1>Sipariş Bilgisi</h1>
+
+  <h3>
+    <button mat-stroked-button color="primary" (click)="Duzenle(secSip)">Düzenle</button>
+    &nbsp;
+    <button mat-stroked-button color="warn" (click)="Sil(secSip)">Sil</button>
+  </h3>
+
+  <h3><b>Sipariş Id : </b>{{ secSip?.siparisId }}</h3>
+  <h3><b>Sipariş Kodu : </b>{{ secSip?.siparisKodu }}</h3>
+  <h3><b>Sipariş Üye Id : </b>{{ secSip?.siparisUyeId }}</h3>
+  <h3><b>Sipariş Tarihi : </b>{{ secSip?.siparisTarih }}</h3>
+  <h3><b>Sipariş Araç Id : </b>{{ secSip?.siparisAracId }}</h3>
+  <h3><b>Sipariş Üye Adı : </b>{{ secSip?.uyeAd }}</h3>
+  <h3><b>Sipariş Üye Soyadı : </b>{{ secSip?.uyeSoyad }}</h3>
+  <h3><b>Sipariş Üye Telefon : </b>{{ secSip?.uyeTelefon }}</h3>
+  <h3><b>Sipariş Üye E-posta : </b>{{ secSip?.uyeEposta }}</h3>
+  <h3><b>Sipariş Üye Adresi : </b>{{ secSip?.uyeAdres }}</h3>
+  <h3><b>Kategori Adı : </b>{{ secSip?.katAdi }}</h3>
+  <h3><b>Marka Adı : </b>{{ secSip?.markaAdi }}</h3>
+  <h3><b>Araç Adı : </b>{{ secSip?.aracAdi }}</h3>
+  <h3><b>Araç Fiyatı : </b>{{ secSip?.aracFiyat }}</h3>
+  <h3><b>Araç Bilgisi : </b>{{ secSip?.aracBilgi }}</h3>
+  <h3><b>Araç Stok : </b>{{ secSip?.aracStok }}</h3>
+  <h3><b>Araç Kodu : </b>{{ secSip?.aracKodu }}</h3>
+
+
+
+
+
+
+
+  <p>&nbsp;</p>
+
+  <button mat-stroked-button color="primary" [routerLink]="['/admin/siparisler']">Geri</button>
+</div>

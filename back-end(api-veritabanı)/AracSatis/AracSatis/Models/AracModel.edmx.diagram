@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d803803cdab34e43bf0e51f178a05a85" Name="Diagram1" ZoomLevel="98">
+        <EntityTypeShape EntityType="DB002Model.araclar" Width="1.5" PointX="4.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB002Model.aracSiparisler" Width="1.5" PointX="7" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB002Model.kategoriler" Width="1.5" PointX="2.5" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB002Model.markalar" Width="1.5" PointX="3.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB002Model.uyeler" Width="1.5" PointX="8.875" PointY="3.125" IsExpanded="true" />
+        <AssociationConnector Association="DB002Model.FK_araclar_ToKategoriler" ManuallyRouted="false" />
+        <AssociationConnector Association="DB002Model.FK_araclar_ToMarkalar" ManuallyRouted="false" />
+        <AssociationConnector Association="DB002Model.FK_aracSiparisler_ToAraclar" ManuallyRouted="false" />
+        <AssociationConnector Association="DB002Model.FK_aracSiparisler_ToUyeler" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

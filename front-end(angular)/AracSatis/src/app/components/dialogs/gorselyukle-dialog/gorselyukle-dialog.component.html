@@ -1,0 +1,24 @@
+<mat-toolbar color="primary" class="mat-elevation-z6">
+  <span>Görsel Güncelle</span>
+</mat-toolbar>
+
+<div class="container">
+
+  <div *ngIf="secUrun">
+    <h3><b>Araç Kodu : </b> {{secUrun.aracKodu}} <b>Ürün Adı : </b>{{secUrun.aracAdi}} </h3>
+    <img [src]="apiServis.siteUrl +'/Dosyalar/'+ secUrun.aracFoto" style="width: 100px;" />
+  </div>
+
+  <input type="file" hidden="true" #foto (change)="GorselSec($event)" onclick="this.value=null">
+  <button mat-stroked-button color="primary" (click)="foto.click()" accept=".jpg,.png">Araç Görselini Seçiniz</button>
+
+  <p>&nbsp;</p>
+
+  <img [src]="secilenGorsel" style="width: 250px;" />
+
+  <p>&nbsp;</p>
+
+  <button mat-raised-button color="primary" (click)="dialogRef.close(urungorsel)" [disabled]="!secilenGorsel">Kaydet</button>&nbsp;
+  <button mat-raised-button color="warn" (click)="dialogRef.close()" >İptal</button>
+
+</div>

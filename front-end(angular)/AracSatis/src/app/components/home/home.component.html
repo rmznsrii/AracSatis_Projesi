@@ -1,0 +1,52 @@
+<div class="container">
+  <h1>Araçlar</h1>
+  <mat-form-field appearance="outline">
+    <input matInput placeholder="Ara" (keyup)="UrunFiltrele($event)"/>
+  </mat-form-field>
+  <p></p>
+
+  <p>&nbsp;</p>
+
+<mat-table [dataSource]="dataSource" class="mat-elevation-z10" matSort>
+
+  <ng-container matColumnDef="aracFoto">
+    <mat-header-cell *matHeaderCellDef> Araç Görsel
+    </mat-header-cell>
+    <mat-cell *matCellDef="let kayit">
+      <img [src]="apiServis.siteUrl + '/Dosyalar/' + kayit.aracFoto" style="width: 250px"/>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="aracAdi" >
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Araç Adı
+    </mat-header-cell>
+    <mat-cell *matCellDef="let kayit"> {{kayit.aracAdi}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="aracFiyat">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Aracın Fiyatı
+    </mat-header-cell>
+    <mat-cell *matCellDef="let kayit"> {{kayit.aracFiyat}} TL </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="aracBilgi">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Araç Detayları
+    </mat-header-cell>
+    <mat-cell *matCellDef="let kayit"> {{kayit.aracBilgi}} </mat-cell>
+  </ng-container>
+
+
+
+
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+
+  <mat-paginator
+    [pageSizeOptions]="[5,10, 15, 25]"
+    showFirstLastButtons
+    class="mat-elevation-z5"
+  >
+  </mat-paginator>
+</div>

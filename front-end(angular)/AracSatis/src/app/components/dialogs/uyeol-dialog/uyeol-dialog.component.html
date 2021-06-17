@@ -1,0 +1,97 @@
+<mat-toolbar color="primary">
+  <span>{{ dialogBaslik }}</span>
+</mat-toolbar>
+
+<div class="container">
+  <form [formGroup]="frm">
+    <mat-form-field appearance="outline">
+      <mat-label>Üye Adı</mat-label>
+      <input
+        matInput
+        placeholder="Üye Adı"
+        formControlName="uyeAdi"
+        name="uyeAdi"
+        required
+        type="text"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Üye Soyadı</mat-label>
+      <input
+        matInput
+        placeholder="Üye Soyadı"
+        formControlName="uyeSoyadi"
+        name="uyeSoyadi"
+        required
+        type="text"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Üye Kullanıcı Adı</mat-label>
+      <input
+        matInput
+        placeholder="Üye Kullanıcı Adı"
+        formControlName="uyeKullaniciAdi"
+        name="uyeKullaniciAdi"
+        required
+        type="text"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Üye Şifre</mat-label>
+      <input
+        matInput
+        placeholder="Üye Şifre"
+        formControlName="uyeSifre"
+        name="uyeSifre"
+        required
+        type="text"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Üye Telefonu</mat-label>
+      <input
+        matInput
+        placeholder="Üye Telefonu"
+        formControlName="uyeTel"
+        name="uyeTel"
+        required
+        type="text"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Üye Mail Adresi</mat-label>
+      <input
+        matInput
+        placeholder="Üye Mail Adresi"
+        formControlName="uyeMail"
+        name="uyeMail"
+        required
+        type="text"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Üye Adresi</mat-label>
+      <input
+        matInput
+        placeholder="Üye Adresi"
+        formControlName="uyeAdres"
+        name="uyeAdres"
+        required
+        type="text"
+      />
+    </mat-form-field>
+  </form>
+
+  <button
+    mat-stroked-button
+    color="primary"
+    [disabled]="frm.invalid"
+    (click)="dialogRef.close(frm.value)"
+  >
+    Kaydet</button
+  >&nbsp;
+  <button mat-stroked-button color="primary" (click)="dialogRef.close()">
+    İptal
+  </button>
+</div>

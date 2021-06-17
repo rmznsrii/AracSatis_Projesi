@@ -1,0 +1,24 @@
+<div class="container">
+  <h1>Ürün Bilgisi</h1>
+
+  <h3>
+    <button mat-stroked-button color="primary" (click)="Duzenle(secUrun)">Düzenle</button>
+    &nbsp;
+    <button mat-stroked-button color="warn" (click)="Sil(secUrun)">Sil</button>
+  </h3>
+
+  <h3><img [src]="apiServis.siteUrl + '/Dosyalar/' + secUrun?.aracFoto" style="width: 300px"/></h3>
+  <h3><b>Araç Id : </b>{{ secUrun?.aracId }}</h3>
+  <h3><b>Araç Kodu : </b>{{ secUrun?.aracKodu }}</h3>
+  <h3><b>Araç Adı : </b>{{ secUrun?.aracAdi }}</h3>
+  <h3><b>Araç Stok : </b>{{ secUrun?.aracStok }}</h3>
+  <h3><b>Araç Satış Fiyatı : </b>{{ secUrun?.aracFiyat }}</h3>
+  <h3><b>Araç Açıklaması : </b>{{ secUrun?.aracBilgi }}</h3>
+  <h3><b>Araç Kategori Id : </b>{{ secUrun?.aracKatId }}</h3>
+  <h3><b>Araç Marka Id : </b>{{ secUrun?.aracMarkaId }}</h3>
+
+  <p>&nbsp;</p>
+
+  <button mat-stroked-button color="primary" [routerLink]="['/admin/urunler']">Geri</button>
+</div>
+

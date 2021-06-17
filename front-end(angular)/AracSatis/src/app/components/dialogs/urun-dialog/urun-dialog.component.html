@@ -1,0 +1,87 @@
+<mat-toolbar color="primary">
+  <span>{{ dialogBaslik }}</span>
+</mat-toolbar>
+
+<div class="container">
+  <form [formGroup]="frm">
+    <mat-form-field appearance="outline">
+      <mat-label>Araç Kodu</mat-label>
+      <input
+        matInput
+        placeholder="Araç Kodu"
+        formControlName="aracKodu"
+        name="aracKodu"
+        required
+        type="text"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Araç Adı</mat-label>
+      <input
+        matInput
+        placeholder="Araç Adı"
+        formControlName="aracAdi"
+        name="aracAdi"
+        required
+        type="text"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Araç Stok</mat-label>
+      <input
+        matInput
+        placeholder="Araç Stok"
+        formControlName="aracStok"
+        name="aracStok"
+        required
+        type="text"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Araç Fiyatı</mat-label>
+      <input
+        matInput
+        placeholder="Araç Fiyatı"
+        formControlName="aracFiyat"
+        name="aracFiyat"
+        required
+        type="text"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Araç Bilgisi</mat-label>
+      <input
+        matInput
+        placeholder="Araç Bilgisi"
+        formControlName="aracBilgi"
+        name="aracBilgi"
+        required
+        type="text"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Araç Kategori Adı</mat-label>
+      <mat-select formControlName="aracKatId" placeholder="Araç Kategori Adı">
+        <mat-option
+          [value]="kategori.katId" *ngFor="let kategori of kategoriler">{{ kategori.katId}} {{kategori.katAdi}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Araç Marka Id</mat-label>
+      <mat-select formControlName="aracMarkaId" placeholder="Araç Marka Id">
+        <mat-option
+          [value]="marka.markaId" *ngFor="let marka of markalar">{{ marka.markaId}} {{marka.markaAdi}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+  </form>
+
+  <button
+    mat-stroked-button    color="primary"    [disabled]="frm.invalid"    (click)="dialogRef.close(frm.value)">Kaydet</button
+  >&nbsp;
+  <button mat-stroked-button color="primary" (click)="dialogRef.close()">    İptal </button>
+</div>

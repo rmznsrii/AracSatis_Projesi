@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DB002ModelStoreContainer" CdmEntityContainer="DB002Entities">
+    <EntitySetMapping Name="araclar">
+      <EntityTypeMapping TypeName="DB002Model.araclar">
+        <MappingFragment StoreEntitySet="araclar">
+          <ScalarProperty Name="aracMarkaId" ColumnName="aracMarkaId" />
+          <ScalarProperty Name="aracKatId" ColumnName="aracKatId" />
+          <ScalarProperty Name="aracKodu" ColumnName="aracKodu" />
+          <ScalarProperty Name="aracFoto" ColumnName="aracFoto" />
+          <ScalarProperty Name="aracStok" ColumnName="aracStok" />
+          <ScalarProperty Name="aracBilgi" ColumnName="aracBilgi" />
+          <ScalarProperty Name="aracFiyat" ColumnName="aracFiyat" />
+          <ScalarProperty Name="aracAdi" ColumnName="aracAdi" />
+          <ScalarProperty Name="aracId" ColumnName="aracId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="aracSiparisler">
+      <EntityTypeMapping TypeName="DB002Model.aracSiparisler">
+        <MappingFragment StoreEntitySet="aracSiparisler">
+          <ScalarProperty Name="siparisKodu" ColumnName="siparisKodu" />
+          <ScalarProperty Name="siparisAracId" ColumnName="siparisAracId" />
+          <ScalarProperty Name="siparisTarih" ColumnName="siparisTarih" />
+          <ScalarProperty Name="siparisUyeId" ColumnName="siparisUyeId" />
+          <ScalarProperty Name="siparisId" ColumnName="siparisId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="kategoriler">
+      <EntityTypeMapping TypeName="DB002Model.kategoriler">
+        <MappingFragment StoreEntitySet="kategoriler">
+          <ScalarProperty Name="katAdi" ColumnName="katAdi" />
+          <ScalarProperty Name="katId" ColumnName="katId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="markalar">
+      <EntityTypeMapping TypeName="DB002Model.markalar">
+        <MappingFragment StoreEntitySet="markalar">
+          <ScalarProperty Name="markaAdi" ColumnName="markaAdi" />
+          <ScalarProperty Name="markaId" ColumnName="markaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="uyeler">
+      <EntityTypeMapping TypeName="DB002Model.uyeler">
+        <MappingFragment StoreEntitySet="uyeler">
+          <ScalarProperty Name="uyeYetkilendirme" ColumnName="uyeYetkilendirme" />
+          <ScalarProperty Name="uyeAdres" ColumnName="uyeAdres" />
+          <ScalarProperty Name="uyeTelefon" ColumnName="uyeTelefon" />
+          <ScalarProperty Name="uyeEposta" ColumnName="uyeEposta" />
+          <ScalarProperty Name="uyeSifre" ColumnName="uyeSifre" />
+          <ScalarProperty Name="uyeKullaniciAdi" ColumnName="uyeKullaniciAdi" />
+          <ScalarProperty Name="uyeSoyadi" ColumnName="uyeSoyadi" />
+          <ScalarProperty Name="uyeAdi" ColumnName="uyeAdi" />
+          <ScalarProperty Name="uyeId" ColumnName="uyeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

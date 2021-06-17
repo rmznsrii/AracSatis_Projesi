@@ -1,0 +1,93 @@
+<div class="container">
+  <h1>Üyeler</h1>
+  <mat-form-field appearance="outline">
+    <input matInput placeholder="Arama" (keyup)="UyeFiltrele($event)">
+  </mat-form-field>
+  <p></p>
+
+  <button mat-mini-fab color='primary' matTooltip='Üye Ekle' (click)="Ekle()">
+    <mat-icon aria-label="label">add</mat-icon>
+  </button>
+
+  <p>&nbsp;</p>
+
+<mat-table [dataSource]="dataSource" class="mat-elevation-z10" matSort>
+  <ng-container matColumnDef="uyeId">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Üye Id
+    </mat-header-cell>
+    <mat-cell *matCellDef="let kayit"> {{kayit.uyeId}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="uyeAdi">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Üye Adı
+    </mat-header-cell>
+    <mat-cell *matCellDef="let kayit"> {{kayit.uyeAdi}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="uyeSoyadi">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Üye Soyadı
+    </mat-header-cell>
+    <mat-cell *matCellDef="let kayit"> {{kayit.uyeSoyadi}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="uyeKullaniciAdi">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Üye Kullanıcı Adı
+    </mat-header-cell>
+    <mat-cell *matCellDef="let kayit"> {{kayit.uyeKullaniciAdi}} </mat-cell>
+  </ng-container>
+
+  <!-- <ng-container matColumnDef="uyeSifre">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Üye Şifresi
+    </mat-header-cell>
+    <mat-cell *matCellDef="let kayit"> {{kayit.uyeSifre}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="uyeTelefon">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Üye Telefonu
+    </mat-header-cell>
+    <mat-cell *matCellDef="let kayit"> {{kayit.uyeTelefon}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="uyeEposta">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Üye Mail Adresi
+    </mat-header-cell>
+    <mat-cell *matCellDef="let kayit"> {{kayit.uyeEposta}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="uyeAdres">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Üye Adresi
+    </mat-header-cell>
+    <mat-cell *matCellDef="let kayit"> {{kayit.uyeAdres}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="uyeYetkilendirme">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Üye Yetkisi
+    </mat-header-cell>
+    <mat-cell *matCellDef="let kayit"> {{kayit.uyeYetkilendirme}} </mat-cell>
+  </ng-container> -->
+
+  <ng-container matColumnDef="islemler">
+    <mat-header-cell *matHeaderCellDef> İşlemler
+    </mat-header-cell>
+    <mat-cell *matCellDef="let kayit">
+
+      <button mat-icon-button matTooltip='Detay' [routerLink]="['/admin/uyeliste',kayit.uyeId]">
+        <mat-icon aria-label="label" color='primary'>person</mat-icon>
+      </button>
+      <button mat-icon-button matTooltip='Düzenle' (click)="Duzenle(kayit)">
+        <mat-icon aria-label="label" color='accent'>edit</mat-icon>
+      </button>
+      <button mat-icon-button matTooltip='Sil' (click)="Sil(kayit)">
+        <mat-icon aria-label="label" color='warn'>delete</mat-icon>
+      </button>
+
+    </mat-cell>
+  </ng-container>
+
+
+
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+
+<mat-paginator [pageSizeOptions]="[10, 15, 25]" showFirstLastButtons class="mat-elevation-z5">
+</mat-paginator>
+
+</div>
